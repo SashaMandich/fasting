@@ -1,0 +1,211 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "963342ce597daf00f376cfc63de84968",
+    "entities": [
+      {
+        "tableName": "fast_log",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `start_epoch_millis` INTEGER NOT NULL, `end_epoch_millis` INTEGER, `meal_composition` TEXT NOT NULL, `note` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startEpochMillis",
+            "columnName": "start_epoch_millis",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "endEpochMillis",
+            "columnName": "end_epoch_millis",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "mealComposition",
+            "columnName": "meal_composition",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "note",
+            "columnName": "note",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_fast_log_start_epoch_millis",
+            "unique": false,
+            "columnNames": [
+              "start_epoch_millis"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_fast_log_start_epoch_millis` ON `${TABLE_NAME}` (`start_epoch_millis`)"
+          },
+          {
+            "name": "index_fast_log_end_epoch_millis",
+            "unique": false,
+            "columnNames": [
+              "end_epoch_millis"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_fast_log_end_epoch_millis` ON `${TABLE_NAME}` (`end_epoch_millis`)"
+          }
+        ]
+      },
+      {
+        "tableName": "weight_entry",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `timestamp_epoch_millis` INTEGER NOT NULL, `weight_kg` REAL NOT NULL, `body_fat_percent` REAL, `tag` TEXT NOT NULL, `note` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timestampEpochMillis",
+            "columnName": "timestamp_epoch_millis",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "weightKg",
+            "columnName": "weight_kg",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "bodyFatPercent",
+            "columnName": "body_fat_percent",
+            "affinity": "REAL"
+          },
+          {
+            "fieldPath": "tag",
+            "columnName": "tag",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "note",
+            "columnName": "note",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_weight_entry_timestamp_epoch_millis",
+            "unique": false,
+            "columnNames": [
+              "timestamp_epoch_millis"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_weight_entry_timestamp_epoch_millis` ON `${TABLE_NAME}` (`timestamp_epoch_millis`)"
+          }
+        ]
+      },
+      {
+        "tableName": "symptom_log",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `timestamp_epoch_millis` INTEGER NOT NULL, `fast_id` INTEGER, `energy_level` INTEGER NOT NULL, `clarity_level` INTEGER NOT NULL, `hunger_level` INTEGER NOT NULL, `symptoms` TEXT NOT NULL, `note` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timestampEpochMillis",
+            "columnName": "timestamp_epoch_millis",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fastId",
+            "columnName": "fast_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "energyLevel",
+            "columnName": "energy_level",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "clarityLevel",
+            "columnName": "clarity_level",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hungerLevel",
+            "columnName": "hunger_level",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "symptoms",
+            "columnName": "symptoms",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "note",
+            "columnName": "note",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_symptom_log_timestamp_epoch_millis",
+            "unique": false,
+            "columnNames": [
+              "timestamp_epoch_millis"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_symptom_log_timestamp_epoch_millis` ON `${TABLE_NAME}` (`timestamp_epoch_millis`)"
+          },
+          {
+            "name": "index_symptom_log_fast_id",
+            "unique": false,
+            "columnNames": [
+              "fast_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_symptom_log_fast_id` ON `${TABLE_NAME}` (`fast_id`)"
+          }
+        ]
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '963342ce597daf00f376cfc63de84968')"
+    ]
+  }
+}

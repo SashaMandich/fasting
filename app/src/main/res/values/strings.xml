@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Fasting</string>
+    <string name="widget_label">Fasting Tracker</string>
+    <string name="widget_description">Elapsed fast, current biological stage, and quick start/stop controls.</string>
+    <string name="notification_channel_name">Active fast</string>
+    <string name="notification_channel_description">Live elapsed time and biological phase for the fast in progress.</string>
+</resources>
